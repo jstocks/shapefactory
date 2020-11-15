@@ -1,6 +1,7 @@
 import abc
 import math
 
+
 class Shape(metaclass=abc.Meta):
     def __init__(self, name):
         self.__name = name
@@ -20,7 +21,7 @@ class Shape(metaclass=abc.Meta):
     @name.setter
     def name(self, value):
         if not type(value) == str:
-            raise TypeError('Name is not a sring.')
+            raise TypeError('Name is not a string.')
         if value == "":
             raise ValueError("Assigned shape can not be empty.")
         self.__name = value
