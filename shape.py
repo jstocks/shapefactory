@@ -53,7 +53,7 @@ class Shape(metaclass=abc.ABCMeta):
     def __eq__(self, other):
         """compare against another Shape object for equality"""
         if isinstance(other, Shape):
-            if self.name == other.name and self.area == other.area:
+            if self.name() == other.name() and self.area() == other.area():
                 return True
             return False
         raise TypeError("object passed to equals function is not a Shape")
@@ -62,9 +62,9 @@ class Shape(metaclass=abc.ABCMeta):
         """compare against another Shape to see if current shape's area and
         perimeter are less than the other"""
         if isinstance(other, Shape):
-            if self.name < other.name:
+            if self.name() < other.name():
                 return True
-            if self.name == other.name and self.area < other.area:
+            if self.name() == other.name() and self.area() < other.area():
                 return True
             return False
         raise TypeError("object passed to less than is not a Shape")
@@ -73,9 +73,9 @@ class Shape(metaclass=abc.ABCMeta):
         """compare against another Shape to see if current shape's area and
         perimeter are greater than the other"""
         if isinstance(other, Shape):
-            if self.name > other.name:
+            if self.name() > other.name():
                 return True
-            if self.name == other.name and self.area > other.area:
+            if self.name() == other.name() and self.area() > other.area():
                 return True
             return False
         raise TypeError("object passed to greater than is not a Shape")
