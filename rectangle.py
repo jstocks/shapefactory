@@ -6,12 +6,11 @@ from shape import Shape
 
 class Rectangle(Shape):
     # This class uses attributes of length and width to calculate the area and perimeter
-    def __init__(self, length, width, name):
+    def __init__(self, length, width):
         """
         Initializes a rectangle object.
-        parameter: length, width, name
+        parameter: length, width
         """
-        super().__init__(name)
         self.length = length
         self.width = width
 

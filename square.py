@@ -8,8 +8,7 @@ class Square(Shape):
     """
     This class uses the length of one side to form a square.
     """
-    def __init__(self, length, name):
-        super().__init__(name)
+    def __init__(self, length):
         self.length = length
 
     def name(self):
