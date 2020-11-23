@@ -53,13 +53,13 @@ class DrawingProgram:
 
     # Sort shape in ascending order
     def sort_shapes(self):
-        self.merge_sort()
+        self.merge_sort(self.__shapes)
         """
         first = 0
         last = len(self.__shapes) - 1
         DrawingProgram.quick_sort(self, first, last)
         """
-    # Mearge sort
+    # Merge sort
     def merge_sort(self, shape_array):
         size = len(shape_array)
         """base condition; return the array for size equal to or less than 1"""
@@ -167,35 +167,43 @@ class DrawingProgram:
 
 
 tri1 = ShapeFactory.create_triangle(3, 4.5, 4, 5)
-circle1 = ShapeFactory.create_circle(1)
+circle1 = ShapeFactory.create_circle(3)
 rect1 = ShapeFactory.create_rectangle(2, 3)
 circle2 = ShapeFactory.create_circle(2)
-squre1 = ShapeFactory.create_square(3)
+square1 = ShapeFactory.create_square(3)
 
-my_shapes = [tri1, circle1, rect1, circle2]
+# my_shapes = [tri1, circle1, rect1, circle2]
 dp = DrawingProgram()
 dp.add_shape(tri1)
+dp.add_shape(circle1)
+dp.add_shape(rect1)
 dp.add_shape(circle2)
-for i in dp:
-    print(i)
-print("----------------------------")
-dp.remove_shape(tri1)
-for i in dp:
-    print(i)
-#dp.print_shape("Circle")
-print("----------------------------")
-dp.add_shape(squre1)
-for i in dp:
-    print(i)
-print("----------------------------")
-print(dp.get_shape(1))
-print("----------------------------")
-dp.set_shape(tri1, 0)
-
+dp.add_shape(square1)
 for i in dp:
     print(i)
 print("----------------------------")
 dp.sort_shapes()
+
+for i in dp:
+    print(i)
+print("----------------------------")
+# dp.remove_shape(tri1)
+# for i in dp:
+#     print(i)
+# #dp.print_shape("Circle")
+# print("----------------------------")
+# dp.add_shape(squre1)
+# for i in dp:
+#     print(i)
+# print("----------------------------")
+# print(dp.get_shape(1))
+# print("----------------------------")
+# dp.set_shape(tri1, 0)
+#
+# for i in dp:
+#     print(i)
+# print("----------------------------")
+# dp.sort_shapes()
 
 """
 
