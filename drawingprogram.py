@@ -163,6 +163,7 @@ class DrawingProgram:
         #     if len(self.__shapes) >= 0:
         #         for shape in self.__shapes:
         #             my_string = my_string + shape.__str__() + "\n"
+        #     my_string = my_string.rstrip()
         #     return my_string
 
 
