@@ -9,12 +9,11 @@ class Circle(Shape):
     """
     This class used the radius attribute and pi to calculate the circumference and area of a circle
     """
-    def __init__(self, radius, name):
+    def __init__(self, radius):
         """
         Initializes a Circle object.
         Parameters: radius, name
         """
-        super().__init__(name)
         self.radius = radius
 
     def name(self):

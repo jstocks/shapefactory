@@ -8,12 +8,12 @@ class Triangle(Shape):
     """
     This class is given 3 lengths to form a triangle shape
     """
-    def __init__(self, base_length, height, side_length1, side_length2, name):
+    def __init__(self, base_length, height, side_length1, side_length2):
         """
         Initializes a triangle object.
         Parameters: 3 heights, and the name
         """
-        super().__init__(name)
+
         self.base_length = base_length
         self.height = height
         self.side_length1 = side_length1
