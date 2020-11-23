@@ -59,7 +59,7 @@ class DrawingProgram:
         last = len(self.__shapes) - 1
         DrawingProgram.quick_sort(self, first, last)
         """
-
+    # Mearge sort
     def merge_sort(self, shape_array):
         size = len(shape_array)
         """base condition; return the array for size equal to or less than 1"""
