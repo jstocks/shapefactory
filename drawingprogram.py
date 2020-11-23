@@ -22,12 +22,8 @@ class DrawingProgram:
 
     # Add a shape to the drawing program
     # Parameter: a shape to add to the drawing program
-    def add_shape(self, shapes):
-        if len(shapes) > 0:
-            for shape in shapes:
-                self.__shapes.append(shape)
-        else:
-            raise ValueError("No shape to add")
+    def add_shape(self, shape):
+        self.__shapes.append(shape)
 
     # Remove a shape from the drawing program
     # Parameter: a shape to remove from the drawing program
@@ -63,16 +59,17 @@ class DrawingProgram:
         last = len(self.__shapes) - 1
         DrawingProgram.quick_sort(self, first, last)
         """
-    def merge_sort(self, arr=None):
-        size = len(self.__shapes)
+
+    def merge_sort(self, shape_array):
+        size = len(shape_array)
         """base condition; return the array for size equal to or less than 1"""
         if size <= 1:
-            return self.__shapes
+            return shape_array
         if size > 1:
             """split the array in half"""
             middle = size // 2
-            left_arr = self.__shapes[:middle]
-            right_arr = self.__shapes[middle:]
+            left_arr = shape_array[:middle]
+            right_arr = shape_array[middle:]
             """sort the two halves independently and recursively"""
             self.merge_sort(left_arr)
             self.merge_sort(right_arr)
@@ -82,19 +79,19 @@ class DrawingProgram:
             """copy data to temporary arrays left and right"""
             while a < left_size and b < right_size:
                 if left_arr[a] < right_arr[b]:
-                    self.__shapes[c] = left_arr[a]
+                    shape_array[c] = left_arr[a]
                     a += 1
                 else:
-                    self.__shapes[c] = right_arr[b]
+                    shape_array[c] = right_arr[b]
                     b += 1
                 c += 1
             """check if any element remains in left or right array"""
             while a < left_size:
-                self.__shapes[c] = left_arr[a]
+                shape_array[c] = left_arr[a]
                 a += 1
                 c += 1
             while b < right_size:
-                self.__shapes[c] = right_arr[b]
+                shape_array[c] = right_arr[b]
                 b += 1
                 c += 1
 
@@ -161,18 +158,19 @@ class DrawingProgram:
             raise ValueError("ERROR: the value you entered is out of range. You entered :" + str(index))
 
         # Provide a name of each shape in the list of shapes
-        def __str__(self):
-            my_string = ""
-            if len(self.__shapes) >= 0:
-                for shape in self.__shapes:
-                    my_string = my_string + shape.__str__() + "\n"
-            return my_string
+        # def __str__(self):
+        #     my_string = ""
+        #     if len(self.__shapes) >= 0:
+        #         for shape in self.__shapes:
+        #             my_string = my_string + shape.__str__() + "\n"
+        #     return my_string
 
 
 tri1 = ShapeFactory.create_triangle(3, 4.5, 4, 5)
 circle1 = ShapeFactory.create_circle(1)
 rect1 = ShapeFactory.create_rectangle(2, 3)
 circle2 = ShapeFactory.create_circle(2)
+squre1 = ShapeFactory.create_square(3)
 
 my_shapes = [tri1, circle1, rect1, circle2]
 dp = DrawingProgram()
@@ -180,9 +178,24 @@ dp.add_shape(tri1)
 dp.add_shape(circle2)
 for i in dp:
     print(i)
-dp.print_shape("Circle")
 print("----------------------------")
+dp.remove_shape(tri1)
+for i in dp:
+    print(i)
+#dp.print_shape("Circle")
+print("----------------------------")
+dp.add_shape(squre1)
+for i in dp:
+    print(i)
+print("----------------------------")
+print(dp.get_shape(1))
+print("----------------------------")
+dp.set_shape(tri1, 0)
 
+for i in dp:
+    print(i)
+print("----------------------------")
+dp.sort_shapes()
 
 """
 
