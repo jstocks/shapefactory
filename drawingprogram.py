@@ -157,13 +157,14 @@ class DrawingProgram:
         else:
             raise ValueError("ERROR: the value you entered is out of range. You entered :" + str(index))
 
-        # Provide a name of each shape in the list of shapes
-        # def __str__(self):
-        #     my_string = ""
-        #     if len(self.__shapes) >= 0:
-        #         for shape in self.__shapes:
-        #             my_string = my_string + shape.__str__() + "\n"
-        #     return my_string
+    # Provide a name of each shape in the list of shapes
+    def __str__(self):
+        my_string = ""
+        if len(self.__shapes) >= 0:
+            for shape in self.__shapes:
+                my_string = my_string + shape.__str__() + "\n"
+        my_string = my_string.rstrip()
+        return my_string
 
 
 tri1 = ShapeFactory.create_triangle(3, 4.5, 4, 5)
@@ -197,6 +198,7 @@ for i in dp:
 print("----------------------------")
 dp.sort_shapes()
 
+# print(DrawingProgram)
 """
 
 dp.remove_shape(my_shapes[4])
