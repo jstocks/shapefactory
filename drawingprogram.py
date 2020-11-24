@@ -27,16 +27,13 @@ class DrawingProgram:
 
     # Remove a shape from the drawing program
     # Parameter: a shape to remove from the drawing program
-    def remove_shape(self, shape):
+    def remove_shape(self, shape_to_remove):
         if len(self.__shapes) > 0:
-            self.__shapes.remove(shape)
+            for shape in self.__shapes:
+                if shape.name() == shape_to_remove:
+                    self.__shapes.remove(shape)
         else:
             raise ValueError("No shape to remove")
-
-    # Print each shape in the drawing program
-    # def print_shape(self):
-    #     for shapes in self.__shapes:
-    #         print(self.__shapes.name_of_shape)
 
     def print_shape(self, shape_to_print):
         # Prints all shapes from drawing program list with specified shape name
@@ -53,12 +50,8 @@ class DrawingProgram:
 
     # Sort shape in ascending order
     def sort_shapes(self):
-        self.merge_sort()
-        """
-        first = 0
-        last = len(self.__shapes) - 1
-        DrawingProgram.quick_sort(self, first, last)
-        """
+        self.merge_sort(self.__shapes)
+
     # Merge sort
     def merge_sort(self, shape_array):
         size = len(shape_array)
@@ -95,50 +88,6 @@ class DrawingProgram:
                 b += 1
                 c += 1
 
-    # Using Quick Sort to sort shape
-    # Parameter: First location of index, Last location of index
-    def quick_sort(self, first, last):
-        if last - first > 0:
-            partition_point = DrawingProgram.partition(self, first, last)
-            DrawingProgram.quick_sort(self, first, partition_point-1)
-            DrawingProgram.quick_sort(self, partition_point+1, last)
-
-    # Partition the list
-    # Parameter: First index location, Last index location
-    # Return: Index of the last element
-    def partition(self, first_index, last_index):
-        pivot = self.__shapes[first_index]
-        pivot_index = first_index
-        index_of_the_last_element = last_index
-
-        less_than_pivot_index = index_of_the_last_element
-        greater_than_pivot_index = first_index + 1
-
-        while True:
-            temp = ""
-
-            # While next value < pivot && index of next value != the last index.
-            while self.__shapes[greater_than_pivot_index] < pivot and greater_than_pivot_index < last_index:
-                greater_than_pivot_index += 1
-
-            # While the last value > pivot && the last value index >= to first index
-            while self.__shapes[less_than_pivot_index] > pivot and less_than_pivot_index >= first_index:
-                less_than_pivot_index -= 1
-
-            # if current index < the last index
-            if greater_than_pivot_index < less_than_pivot_index:
-                temp = self.__shapes[greater_than_pivot_index]
-                self.__shapes[greater_than_pivot_index] = self.__shapes[less_than_pivot_index]
-                self.__shapes[less_than_pivot_index] = temp
-            else:
-                break
-
-        # Swap the places
-        self.__shapes[pivot_index] = self.__shapes[less_than_pivot_index]
-        self.__shapes[less_than_pivot_index] = pivot
-
-        return less_than_pivot_index
-
     # Get the shape in the list of shape
     # Parameter: Index
     # Return: Value of shape in the index or Raise error when the index is out of range
@@ -167,36 +116,68 @@ class DrawingProgram:
         return my_string
 
 
+        # Provide a name of each shape in the list of shapes
+        # def __str__(self):
+        #     my_string = ""
+        #     if len(self.__shapes) >= 0:
+        #         for shape in self.__shapes:
+        #             my_string = my_string + shape.__str__() + "\n"
+        #     my_string = my_string.rstrip()
+        #     return my_string
+
+
+
 tri1 = ShapeFactory.create_triangle(3, 4.5, 4, 5)
-circle1 = ShapeFactory.create_circle(1)
+circle1 = ShapeFactory.create_circle(3)
 rect1 = ShapeFactory.create_rectangle(2, 3)
 circle2 = ShapeFactory.create_circle(2)
-squre1 = ShapeFactory.create_square(3)
+circle3 = ShapeFactory.create_circle(9)
+circle4 = ShapeFactory.create_circle(6)
+square1 = ShapeFactory.create_square(3)
 
-my_shapes = [tri1, circle1, rect1, circle2]
+# my_shapes = [tri1, circle1, rect1, circle2]
 dp = DrawingProgram()
 dp.add_shape(tri1)
+dp.add_shape(circle1)
+dp.add_shape(rect1)
 dp.add_shape(circle2)
-for i in dp:
-    print(i)
-print("----------------------------")
-dp.remove_shape(tri1)
-for i in dp:
-    print(i)
-#dp.print_shape("Circle")
-print("----------------------------")
-dp.add_shape(squre1)
-for i in dp:
-    print(i)
-print("----------------------------")
-print(dp.get_shape(1))
-print("----------------------------")
-dp.set_shape(tri1, 0)
+dp.add_shape(circle3)
+dp.add_shape(circle4)
+dp.add_shape(square1)
 
 for i in dp:
     print(i)
+print("-------------------")
+dp.remove_shape("Circle")
+
+for i in dp:
+    print(i)
+
+
+
+# print("----------------------------")
+# dp.sort_shapes()
+#
+# for i in dp:
+#     print(i)
 print("----------------------------")
-dp.sort_shapes()
+# dp.remove_shape(tri1)
+# for i in dp:
+#     print(i)
+# #dp.print_shape("Circle")
+# print("----------------------------")
+# dp.add_shape(squre1)
+# for i in dp:
+#     print(i)
+# print("----------------------------")
+# print(dp.get_shape(1))
+# print("----------------------------")
+# dp.set_shape(tri1, 0)
+#
+# for i in dp:
+#     print(i)
+# print("----------------------------")
+# dp.sort_shapes()
 
 # print(DrawingProgram)
 """
