@@ -84,17 +84,16 @@ class MyDrawingProgramTest(unittest.TestCase):
             self.assertEqual(True, True)
 
     # Test remove_shape method with remove all
-    # def test_remove_shape_all_shape(self):
-    #     shapes = [ShapeFactory.create_triangle(3, 4.5, 4, 5),
-    #               ShapeFactory.create_circle(3),
-    #               ShapeFactory.create_rectangle(2, 3),
-    #               ShapeFactory.create_square(3)]
-    #     drawing_program = DrawingProgram(shapes)
-    #     try:
-    #         for i in shapes:
-    #             drawing_program.remove_shape(i)
-    #     except ValueError as value_error:
-    #         self.assertEqual(True, True)
+    def test_remove_shape_all_shape(self):
+        shapes = [ShapeFactory.create_triangle(3, 4.5, 4, 5),
+                  ShapeFactory.create_circle(3),
+                  ShapeFactory.create_rectangle(2, 3),
+                  ShapeFactory.create_square(3)]
+        drawing_program = DrawingProgram(shapes)
+        try:
+            count = drawing_program.remove_shape('Circle')
+        except ValueError as value_error:
+            self.assertEqual(True, True)
 
     # Test remove_shape method with one shape
     def test_remove_shape_one_shape(self):

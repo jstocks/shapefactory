@@ -28,13 +28,13 @@ class DrawingProgram:
     # Remove a shape from the drawing program
     # Parameter: a shape to remove from the drawing program
     def remove_shape(self, shape_to_remove):
-        if len(self.__shapes) > 0:
-            count = 0
-            for shape in self.__shapes:
-                if shape.name() == shape_to_remove:
-                    self.__shapes.remove(shape)
-                    count += 1
-            return count
+        original_len = len(self.__shapes)
+        if original_len > 0:
+            self.__shapes = [shape for shape in self.__shapes if shape.name() !=
+                             shape_to_remove]
+            original_len -= len(self.__shapes)
+            print("Removed " + str(original_len) + " " + str(shape_to_remove) + "(s).")
+            return original_len
         else:
             raise ValueError("No shape to remove")
 
@@ -122,84 +122,5 @@ class DrawingProgram:
         my_string = my_string.rstrip()
         return my_string
 
-#
-# tri1 = ShapeFactory.create_triangle(3, 4.5, 4, 5)
-# circle1 = ShapeFactory.create_circle(3)
-# rect1 = ShapeFactory.create_rectangle(2, 3)
-# circle2 = ShapeFactory.create_circle(2)
-# circle3 = ShapeFactory.create_circle(9)
-# circle4 = ShapeFactory.create_circle(6)
-# square1 = ShapeFactory.create_square(3)
-# square2 = ShapeFactory.create_square(6)
-#
-#
-# dp = DrawingProgram()
-# dp.add_shape(tri1)
-# dp.add_shape(circle1)
-# dp.add_shape(rect1)
-# dp.add_shape(circle2)
-# dp.add_shape(circle3)
-# dp.add_shape(circle4)
-# dp.add_shape(square1)
-# dp.add_shape(square2)
-# print("-------------------")
-# dp.remove_shape('Circle')
-# print(dp)
-# dp.print_shape("Square")
-# print("-------------------")
 
-# dp.sort_shapes()
-# for i in dp:
-#     print(i)
-# print("-------------------")
-#
-#
-# dp.remove_shape("Square")
-# for i in dp:
-#     print(i)
-#
-
-
-# print("----------------------------")
-# dp.sort_shapes()
-#
-# for i in dp:
-#     print(i)
-
-# dp.remove_shape(tri1)
-# for i in dp:
-#     print(i)
-# #dp.print_shape("Circle")
-# print("----------------------------")
-# dp.add_shape(squre1)
-# for i in dp:
-#     print(i)
-# print("----------------------------")
-# print(dp.get_shape(1))
-# print("----------------------------")
-# dp.set_shape(tri1, 0)
-#
-# for i in dp:
-#     print(i)
-# print("----------------------------")
-# dp.sort_shapes()
-
-# print(DrawingProgram)
-#
-# dp.remove_shape(my_shapes[4])
-# print("----------------------------")
-# for i in dp:
-#     print(i)
-#
-#
-# print("----------------------------")
-# print(dp.get_shape(2))
-# print("----------------------------")
-# dp.set_shape("Dee", 2)
-# for i in dp:
-#     print(i)
-#
-# print("----------------------------")
-# dp.print_shape()
-#
 

@@ -5,45 +5,54 @@ from shapefactory import ShapeFactory
 #Create a DrawingProgram?
 dp = DrawingProgram()
 
-#Create shapes & add to list
-"""creating one shape of each kind"""
+# Create shapes & add to list
+# creating one shape of each kind
+print("------------ Add Shape ---------------")
 dp.add_shape(ShapeFactory.create_triangle(2, 3, 4, 5))
 dp.add_shape(ShapeFactory.create_square(2))
 dp.add_shape(ShapeFactory.create_rectangle(5, 4))
 dp.add_shape(ShapeFactory.create_circle(4))
 print(dp)
-#
-# #Sort shapes
-# """sorting the shapes in the list by alphabetical and then area"""
-# dp.sort_shapes()
-# print(dp)
-#
-# #Add more shapes to list
-# """adding additional shapes to the list"""
-# dp.add_shape(ShapeFactory.create_triangle(3, 5, 7, 9))
-# dp.add_shape(ShapeFactory.create_square(4))
-# dp.add_shape(ShapeFactory.create_rectangle(3,7))
-# dp.add_shape(ShapeFactory.create_circle(3))
-# print(dp)
-#
-# #Sort shapes
-# """sorting the shapes in the list by alphabetical and then area"""
-# dp.sort_shapes()
-# print(dp)
 
-#Get the index of some shapes
-"""returns the string of the shape at specified index"""
-# print(dp.get_shape(0))
-# print(dp.get_shape(1))
-# print(dp.get_shape(2))
-# print(dp.get_shape(3))
+# Sort shapes
+# Sorting the shapes in the list by alphabetical and then area
+print("------------ Sort Shape ---------------")
+dp.sort_shapes()
+print(dp)
 
-#Replace some shapes
-"""calls an index and replaces that shape with a newly created shape"""
-# dp.set_shape((ShapeFactory.create_circle(1)), 0)
-# print(dp)
+# Add more shapes to list
+# adding additional shapes to the list
+print("------------ Add more shape ---------------")
+dp.add_shape(ShapeFactory.create_triangle(3, 5, 7, 9))
+dp.add_shape(ShapeFactory.create_square(4))
+dp.add_shape(ShapeFactory.create_rectangle(3,7))
+dp.add_shape(ShapeFactory.create_circle(3))
+print(dp)
 
-# #Sort list again
-# """sort the list again with updated shapes / locations"""
-# dp.sort_shapes()
-# print(dp)
+# Sort shapes
+# sorting the shapes in the list by alphabetical and then area
+print("------------ Sort Shape ---------------")
+dp.sort_shapes()
+print(dp)
+
+# Get the index of some shapes
+# returns the string of the shape at specified index
+print("------------ Get Shape ---------------")
+print("Get shape at index 0: ", dp.get_shape(0))
+print("Get shape at index 2: ", dp.get_shape(2))
+print("Get shape at index 4: ", dp.get_shape(4))
+print("Get shape at index 6: ", dp.get_shape(6))
+
+# Replace some shapes
+# calls an index and replaces that shape with a newly created shape
+print("------------ Set/Replace Shape ---------------")
+dp.set_shape((ShapeFactory.create_circle(1)), 5)
+print("Replace shape at index 5 from Square to Circle")
+print(dp)
+
+# Remove shape
+# removes ALL shapes that match the one passed as a parameter
+print("------------ Remove Shape ---------------")
+dp.remove_shape('Circle')
+print(dp)
+
