@@ -29,31 +29,38 @@ class DrawingProgram:
     # Parameter: a shape to remove from the drawing program
     def remove_shape(self, shape_to_remove):
         if len(self.__shapes) > 0:
+            count = 0
             for shape in self.__shapes:
                 if shape.name() == shape_to_remove:
                     self.__shapes.remove(shape)
+                    count += 1
+            return count
         else:
             raise ValueError("No shape to remove")
 
+    # Print shape
+    # Parameter: shape_to_print
     def print_shape(self, shape_to_print):
         # Prints all shapes from drawing program list with specified shape name
         # Parameter: a shape to print from the drawing program: Circle, Square, Rectangle, or Triangle
-        if shape_to_print == "Circle" or \
-                shape_to_print == "Square" or \
-                shape_to_print == "Rectangle" or \
-                shape_to_print == "Triangle":
-            for shape in self.__shapes:
-                if shape.name() == shape_to_print:
-                    print(shape)
+        if len(shape_to_print) > 0:
+            if shape_to_print == "Circle" or \
+                    shape_to_print == "Square" or \
+                    shape_to_print == "Rectangle" or \
+                    shape_to_print == "Triangle":
+                for shape in self.__shapes:
+                    if shape.name() == shape_to_print:
+                        print(shape)
         else:
             raise ValueError("Must specify which shape to print: Circle, Square, Rectangle, or Triangle")
 
     # Sort shape in ascending order
     def sort_shapes(self):
-        self.merge_sort(self.__shapes)
+        if len(self.__shapes) > 0:
+            self.__merge_sort__(self.__shapes)
 
     # Merge sort
-    def merge_sort(self, shape_array):
+    def __merge_sort__(self, shape_array):
         size = len(shape_array)
         """base condition; return the array for size equal to or less than 1"""
         if size <= 1:
@@ -64,8 +71,8 @@ class DrawingProgram:
             left_arr = shape_array[:middle]
             right_arr = shape_array[middle:]
             """sort the two halves independently and recursively"""
-            self.merge_sort(left_arr)
-            self.merge_sort(right_arr)
+            self.__merge_sort__(left_arr)
+            self.__merge_sort__(right_arr)
             a = b = c = 0
             left_size = len(left_arr)
             right_size = len(right_arr)
@@ -115,44 +122,42 @@ class DrawingProgram:
         my_string = my_string.rstrip()
         return my_string
 
+#
+# tri1 = ShapeFactory.create_triangle(3, 4.5, 4, 5)
+# circle1 = ShapeFactory.create_circle(3)
+# rect1 = ShapeFactory.create_rectangle(2, 3)
+# circle2 = ShapeFactory.create_circle(2)
+# circle3 = ShapeFactory.create_circle(9)
+# circle4 = ShapeFactory.create_circle(6)
+# square1 = ShapeFactory.create_square(3)
+# square2 = ShapeFactory.create_square(6)
+#
+#
+# dp = DrawingProgram()
+# dp.add_shape(tri1)
+# dp.add_shape(circle1)
+# dp.add_shape(rect1)
+# dp.add_shape(circle2)
+# dp.add_shape(circle3)
+# dp.add_shape(circle4)
+# dp.add_shape(square1)
+# dp.add_shape(square2)
+# print("-------------------")
+# dp.remove_shape('Circle')
+# print(dp)
+# dp.print_shape("Square")
+# print("-------------------")
 
-        # Provide a name of each shape in the list of shapes
-        # def __str__(self):
-        #     my_string = ""
-        #     if len(self.__shapes) >= 0:
-        #         for shape in self.__shapes:
-        #             my_string = my_string + shape.__str__() + "\n"
-        #     my_string = my_string.rstrip()
-        #     return my_string
-
-
-
-tri1 = ShapeFactory.create_triangle(3, 4.5, 4, 5)
-circle1 = ShapeFactory.create_circle(3)
-rect1 = ShapeFactory.create_rectangle(2, 3)
-circle2 = ShapeFactory.create_circle(2)
-circle3 = ShapeFactory.create_circle(9)
-circle4 = ShapeFactory.create_circle(6)
-square1 = ShapeFactory.create_square(3)
-
-# my_shapes = [tri1, circle1, rect1, circle2]
-dp = DrawingProgram()
-dp.add_shape(tri1)
-dp.add_shape(circle1)
-dp.add_shape(rect1)
-dp.add_shape(circle2)
-dp.add_shape(circle3)
-dp.add_shape(circle4)
-dp.add_shape(square1)
-
-for i in dp:
-    print(i)
-print("-------------------")
-dp.remove_shape("Circle")
-
-for i in dp:
-    print(i)
-
+# dp.sort_shapes()
+# for i in dp:
+#     print(i)
+# print("-------------------")
+#
+#
+# dp.remove_shape("Square")
+# for i in dp:
+#     print(i)
+#
 
 
 # print("----------------------------")
@@ -160,7 +165,7 @@ for i in dp:
 #
 # for i in dp:
 #     print(i)
-print("----------------------------")
+
 # dp.remove_shape(tri1)
 # for i in dp:
 #     print(i)
@@ -180,22 +185,21 @@ print("----------------------------")
 # dp.sort_shapes()
 
 # print(DrawingProgram)
-"""
-
-dp.remove_shape(my_shapes[4])
-print("----------------------------")
-for i in dp:
-    print(i)
-
-
-print("----------------------------")
-print(dp.get_shape(2))
-print("----------------------------")
-dp.set_shape("Dee", 2)
-for i in dp:
-    print(i)
-
+#
+# dp.remove_shape(my_shapes[4])
+# print("----------------------------")
+# for i in dp:
+#     print(i)
+#
+#
+# print("----------------------------")
+# print(dp.get_shape(2))
+# print("----------------------------")
+# dp.set_shape("Dee", 2)
+# for i in dp:
+#     print(i)
+#
 # print("----------------------------")
 # dp.print_shape()
+#
 
-"""
