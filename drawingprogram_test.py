@@ -1,3 +1,7 @@
+"""
+This is the class to test methods in a drawingprogram class
+"""
+
 import unittest
 from drawingprogram import DrawingProgram
 from shapefactory import ShapeFactory
@@ -8,12 +12,14 @@ class MyDrawingProgramTest(unittest.TestCase):
         drawing_program = DrawingProgram()
         self.assertEqual("", drawing_program.__str__(), "DrawingProgram should be empty but it not")
 
+    # Test set_shape method with valid index
     def test_set_shape_valid_index(self):
         shapes = [ShapeFactory.create_triangle(3, 4.5, 4, 5), ShapeFactory.create_circle(3), ShapeFactory.create_circle(2), ShapeFactory.create_square(3)]
         drawing_program = DrawingProgram(shapes)
         drawing_program.set_shape(ShapeFactory.create_triangle(1, 1.5, 2, 3), 1)
         self.assertEqual('Triangle', shapes[1].name())
 
+    # Test set_shape method with negative index
     def test_set_shape_negative_index(self):
         drawing_program = DrawingProgram()
         try:
@@ -23,6 +29,7 @@ class MyDrawingProgramTest(unittest.TestCase):
         except ValueError as value_error:
             self.assertEqual(True, True)
 
+    # Test get_shape method with valid index
     def test_get_shape_valid_index(self):
         drawing_program = DrawingProgram()
         try:
@@ -30,6 +37,7 @@ class MyDrawingProgramTest(unittest.TestCase):
         except ValueError as value_error:
             self.assertEqual(True, True)
 
+    # Test get_shape method with negative index
     def test_get_shape_negative_index(self):
         shapes = [ShapeFactory.create_triangle(3, 4.5, 4, 5), ShapeFactory.create_circle(3)]
         drawing_program = DrawingProgram(shapes)
@@ -39,6 +47,7 @@ class MyDrawingProgramTest(unittest.TestCase):
         except ValueError as value_error:
             self.assertEqual(True, True)
 
+    # Test get_shape method with index too large
     def test_get_shape_index_too_large(self):
         drawing_program = DrawingProgram()
         try:
@@ -47,11 +56,13 @@ class MyDrawingProgramTest(unittest.TestCase):
         except ValueError as value_error:
             self.assertEqual(True, True)
 
+    # Test add_shape method with one shape
     def test_add_shape_one_shape(self):
         drawing_program = DrawingProgram()
         drawing_program.add_shape(ShapeFactory.create_triangle(3, 4.5, 4, 5))
         self.assertEqual('Triangle', drawing_program.get_shape(0).name())
 
+    # Test add_shape method with four shapes
     def test_add_shape_four_shape(self):
         shapes = [ShapeFactory.create_triangle(3, 4.5, 4, 5),
                   ShapeFactory.create_circle(3),
@@ -64,6 +75,7 @@ class MyDrawingProgramTest(unittest.TestCase):
             count += 1
         self.assertEqual(4, count, "4 shapes not added properly ")
 
+    # Test remove_shape method
     def test_remove_no_shape(self):
         try:
             drawing_program = DrawingProgram()
@@ -71,6 +83,7 @@ class MyDrawingProgramTest(unittest.TestCase):
         except ValueError as value_error:
             self.assertEqual(True, True)
 
+    # Test remove_shape method with remove all
     # def test_remove_shape_all_shape(self):
     #     shapes = [ShapeFactory.create_triangle(3, 4.5, 4, 5),
     #               ShapeFactory.create_circle(3),
@@ -83,6 +96,7 @@ class MyDrawingProgramTest(unittest.TestCase):
     #     except ValueError as value_error:
     #         self.assertEqual(True, True)
 
+    # Test remove_shape method with one shape
     def test_remove_shape_one_shape(self):
         shapes = [ShapeFactory.create_triangle(3, 4.5, 4, 5),
                   ShapeFactory.create_circle(3),
@@ -95,6 +109,7 @@ class MyDrawingProgramTest(unittest.TestCase):
         except ValueError as value_error:
             self.assertEqual(True, True)
 
+    # Test print_shape method with no shape
     def test_print_no_shape(self):
         drawing_program = DrawingProgram()
         try:
@@ -102,6 +117,7 @@ class MyDrawingProgramTest(unittest.TestCase):
         except ValueError as value_error:
             self.assertEqual(True, True)
 
+    # Test print_shape method with selected shape
     def test_print_shape_selected_shape(self):
         drawing_program = DrawingProgram()
         try:
@@ -109,6 +125,7 @@ class MyDrawingProgramTest(unittest.TestCase):
         except ValueError as value_error:
             self.assertEqual(True, True)
 
+    # Test print_shape method with all shapes
     def test_print_all_shape(self):
         shapes = [ShapeFactory.create_triangle(3, 4.5, 4, 5),
                   ShapeFactory.create_circle(3),
@@ -122,11 +139,13 @@ class MyDrawingProgramTest(unittest.TestCase):
         except ValueError as value_error:
             self.assertEqual(True, True)
 
+    # Test sort_shape method with no shape
     def test_sort_no_shapes(self):
         drawing_program = DrawingProgram()
         drawing_program.sort_shapes()
         self.assertEqual("", drawing_program.__str__(), "should be empty string for drawing program")
 
+    # Test sort_shape method with one shape
     def test_sort_one_shape(self):
         drawing_program = DrawingProgram()
         drawing_program.add_shape(ShapeFactory.create_square(3))
@@ -135,6 +154,7 @@ class MyDrawingProgramTest(unittest.TestCase):
         except ValueError as value_error:
             self.assertEqual(True, True)
 
+    # Test sort_shape method with four shapes
     def test_sort_four_shapes_ascending(self):
         shapes = [ShapeFactory.create_triangle(3, 4.5, 4, 5),
                   ShapeFactory.create_circle(3),
