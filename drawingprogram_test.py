@@ -160,8 +160,15 @@ class MyDrawingProgramTest(unittest.TestCase):
                   ShapeFactory.create_rectangle(2, 3),
                   ShapeFactory.create_square(3)]
         drawing_program = DrawingProgram(shapes)
+        sorted_shapes = ['Circle', 'Rectangle', 'Square', 'Triangle']
         try:
             drawing_program.sort_shapes()
+            if drawing_program.get_shape(0).name() == sorted_shapes[0] \
+               and drawing_program.get_shape(1).name() == sorted_shapes[1] \
+               and drawing_program.get_shape(2).name() == sorted_shapes[2] \
+               and drawing_program.get_shape(3).name() == sorted_shapes[3]:
+
+                print("Shapes are sorted correctly")
         except ValueError as value_error:
             self.assertEqual(True, True)
 

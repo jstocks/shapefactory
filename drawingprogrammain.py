@@ -1,5 +1,6 @@
 from drawingprogram import DrawingProgram
 from shapefactory import ShapeFactory
+from shape import Shape
 
 
 #Create a DrawingProgram?
@@ -50,9 +51,29 @@ dp.set_shape((ShapeFactory.create_circle(1)), 5)
 print("Replace shape at index 5 from Square to Circle")
 print(dp)
 
+# Print shape
+# print shape in the drawing program
+print("------------ Print Shape ---------------")
+print("Print all 'Triangle' in drawing program")
+dp.print_shape('Triangle')
+
 # Remove shape
 # removes ALL shapes that match the one passed as a parameter
 print("------------ Remove Shape ---------------")
 dp.remove_shape('Circle')
 print(dp)
 
+# Iterator
+# print all shape in the drawing program
+print("------------ Iterator ---------------")
+for shape in dp:
+    print(shape)
+
+# Draw shape
+# draw shapes in the drawing program
+print("------------ Draw Shape ---------------")
+print("Use draw() method to draw 3 Shapes")
+print(Shape.draw(ShapeFactory.create_triangle(3, 5, 7, 9)))
+print(Shape.draw(ShapeFactory.create_square(4)))
+print(Shape.draw(ShapeFactory.create_rectangle(3, 7)))
+print(Shape.draw(ShapeFactory.create_circle(3)))
