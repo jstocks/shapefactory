@@ -1,5 +1,32 @@
-TCSS502: Assignment 4* Team member names:  o Dee Turco  o Jeff Stockman  o Kishan Vekaria
-* Time it took each person to work on assignment  o Dee: 26 hours  o Jeff:  o Kishan:
-* What each person worked ono Dee:   * DrawingProgram  * DrawingProgramIterator  * DrawingProgramMaino Jeff:  * Shape  * ShapeFactory  * DrawingProgramMaino Kishan:  * Circle  * Square  * Rectangle  * Triangle
-  * DrawingProgramMain
-* Any shortcomings/concerns you have with the state of the program* Any questions you have for Tom
+TCSS502: Assignment 4 ShapeFactory
+
+Teammates:
+ 1.Kishan Vekaria
+ 2.Dee Turco
+ 3.Jeffrey Stockman
+
+Contributions:
+Kishan Vekaria: time on assignment =
+- UML
+- Square, Triangle, Rectangle, Circle Classes
+- DrawingProgram Class
+- DrawingProgramMain Class
+- Debugging
+- unittests
+Dee Turco: time on assignment = 16 hours
+- UML
+- DrawingProgram Class
+- DrawingProgramIterator Class
+- DrawingProgramMain Class
+- unittests
+- Debugging
+Jeffrey Stockman: time on assignment = 10 hours
+- UML
+- Shape Class
+- ShapeFactory Class
+- DrawingProgramMain Class
+- DrawingProgram Class
+
+Notes:
+We feel we worked well together - we separated out the work initially, and collaborated once we had a baseline of classes created.  We worked together on debugging and feel it was a good amount of effort from everyone.  We learned from one another, and helped each other out. Perhaps one opportunity for improvement is GitHub / versioning.  We tended to treat Dee's branch as the main branch.
+Shortcomings:
