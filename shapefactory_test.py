@@ -50,7 +50,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             ShapeFactory.create_circle()
             self.assertEqual(True, False, "should not have got here, created circle with no radius parameter")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_circle_object_name(self):
@@ -99,7 +99,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             ShapeFactory.create_rectangle()
             self.assertEqual(True, False, "should not have got here, created rectangle with no length or width")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_create_rectangle_missing_parameter(self):
@@ -107,7 +107,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             ShapeFactory.create_rectangle(1)
             self.assertEqual(True, False, "should not have got here, created rectangle with missing length parameter")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_rectangle_object_name(self):
@@ -150,7 +150,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             ShapeFactory.create_square()
             self.assertEqual(True, False, "should not have got here, created square with no length parameter")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_square_object_name(self):
@@ -201,7 +201,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             ShapeFactory.create_triangle()
             self.assertEqual(True, False, "should not have got here, created triangle with no length parameters")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_create_triangle_missing_3_parameters(self):
@@ -209,7 +209,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             ShapeFactory.create_triangle(1)
             self.assertEqual(True, False, "should not have got here, created triangle with missing length parameters")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_create_triangle_missing_2_parameters(self):
@@ -217,7 +217,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             ShapeFactory.create_triangle(1, 2)
             self.assertEqual(True, False, "should not have got here, created triangle with missing length parameters")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_create_triangle_missing_1_parameter(self):
@@ -225,7 +225,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             ShapeFactory.create_triangle(1, 2, 3)
             self.assertEqual(True, False, "should not have got here, created triangle with missing length parameters")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_triangle_object_name(self):
@@ -362,7 +362,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             if circle == 37:
                 self.assertEqual(True, False, "somehow got past circle == 37")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_eq_rectangle_wrong_type(self):
@@ -372,7 +372,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             if rectangle == 38:
                 self.assertEqual(True, False, "somehow got past rectangle == 38")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_eq_square_wrong_type(self):
@@ -382,7 +382,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             if square == 39:
                 self.assertEqual(True, False, "somehow got past square == 39")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_eq_triangle_wrong_type(self):
@@ -392,7 +392,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             if triangle == 40:
                 self.assertEqual(True, False, "somehow got past triangle == 40")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_lt_first_less_than_second_circle_area(self):
@@ -489,7 +489,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             if circle1 < 37:
                 self.assertEqual(True, False, "somehow got past circle1 < 37")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_lt_wrong_type_rectangle(self):
@@ -499,7 +499,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             if rectangle1 < 37:
                 self.assertEqual(True, False, "somehow got past rectangle1 < 37")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_lt_wrong_type_square(self):
@@ -509,7 +509,7 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             if square1 < 37:
                 self.assertEqual(True, False, "somehow got past square1 < 37")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     def test_lt_wrong_type_triangle(self):
@@ -519,14 +519,8 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             if triangle1 < 37:
                 self.assertEqual(True, False, "somehow got past triangle1 < 37")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
-
-
-
-
-
-
 
     def test_gt_first_greater_than_second_area(self):
         """Basic test of gt (the > operator) where Shape1 area is greater than Shape2 area"""
@@ -586,8 +580,7 @@ class ShapeFactoryTest(unittest.TestCase):
         # Test triangle
         triangle1 = ShapeFactory.create_triangle(10, 10, 10, 10)
         triangle2 = ShapeFactory.create_triangle(10, 10, 10, 10)
-        self.assertEqual(False, rectangle1 > rectangle2, "Triangles are the same, somehow returned "
-                                                         "triangle1 > triangle2")
+        self.assertEqual(False, triangle1 > triangle2, "Triangles are the same, somehow returned triangle1 > triangle2")
 
     def test_gt_wrong_type(self):
         """Use something other than a Shape with >, which should raise a TypeError"""
@@ -596,28 +589,28 @@ class ShapeFactoryTest(unittest.TestCase):
         try:
             if circle1 > 37:
                 self.assertEqual(True, False, "somehow got past circle1 > 37")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
         # Test with rectangle
         rectangle1 = ShapeFactory.create_rectangle(10, 11)
         try:
             if rectangle1 > 37:
                 self.assertEqual(True, False, "somehow got past rectangle1 > 37")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
         # Test with square
         square1 = ShapeFactory.create_square(12)
         try:
             if square1 > 37:
                 self.assertEqual(True, False, "somehow got past square1 > 37")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
         # Test with triangle
         triangle1 = ShapeFactory.create_triangle(10, 20, 30, 40)
         try:
             if triangle1 > 37:
                 self.assertEqual(True, False, "somehow got past triangle1 > 37")
-        except TypeError as type_error:
+        except TypeError:
             self.assertEqual(True, True)
 
     """
@@ -630,6 +623,7 @@ class ShapeFactoryTest(unittest.TestCase):
                 return True
         return NotImplemented
         """
+
 
 if __name__ == '__main__':
     unittest.main()
