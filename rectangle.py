@@ -11,7 +11,10 @@ class Rectangle(Shape):
         Initializes a rectangle object.
         parameter: length, width, name
         """
-
+        if type(length) == str or type(width) == str:
+            raise TypeError("Length and Width parameters cannot be a string")
+        if width < 0 or length < 0:
+            raise ValueError("Length and Width parameters cannot be negative")
         self.length = length
         self.width = width
 

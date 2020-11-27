@@ -14,6 +14,10 @@ class Circle(Shape):
         Initializes a Circle object.
         Parameters: radius, name
         """
+        if type(radius) == str:
+            raise TypeError("Radius cannot be a string")
+        if radius < 0:
+            raise ValueError("Radius cannot be negative")
         self.radius = radius
 
     def name(self):

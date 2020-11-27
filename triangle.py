@@ -13,7 +13,16 @@ class Triangle(Shape):
         Initializes a triangle object.
         Parameters: 3 heights, and the name
         """
-
+        if type(base_length) == str or \
+                type(height) == str or \
+                type(side_length1) == str or \
+                type(side_length2) == str:
+            raise TypeError("Lengths and heights cannot be strings")
+        if base_length < 0 or \
+                height < 0 or \
+                side_length1 < 0 or \
+                side_length2 < 0:
+            raise ValueError("Lengths and heights cannot be less than 0")
         self.base_length = base_length
         self.height = height
         self.side_length1 = side_length1

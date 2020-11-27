@@ -9,7 +9,10 @@ class Square(Shape):
     This class uses the length of one side to form a square.
     """
     def __init__(self, length):
-
+        if type(length) == str:
+            raise ValueError("Length cannot be of type string")
+        if length < 0:
+            raise ValueError("Length cannot be less than 0")
         self.length = length
 
     def name(self):
